@@ -1,0 +1,3 @@
+```
+./prepDE.py3 -i gtf_lst.txt
+```
