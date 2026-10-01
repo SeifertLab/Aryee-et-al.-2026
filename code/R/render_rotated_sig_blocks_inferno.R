@@ -29,13 +29,13 @@ suppressPackageStartupMessages({
 })
 
 package_root <- file.path(project_root, "submission", "zenodo_young_deseq_heatmaps_only_2026-06-15")
-out_dir <- file.path(project_root, "YOUNG DESEQ", "author_heatmap_refresh_2026-07-14", "rotated_sig_blocks_inferno")
+out_dir <- Sys.getenv("YOUNG_HEATMAP_OUT_DIR", unset = file.path(project_root, "YOUNG DESEQ", "author_heatmap_refresh_2026-07-14", "rotated_sig_blocks_inferno"))
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 paths <- list(
   panel_csv = file.path(package_root, "data", "figure_inputs", "young_mito2_redox_panel_groups.csv"),
-  results_csv = file.path(package_root, "data", "young_only", "young_only_dual_species_deseq2_full_universe.csv"),
-  normalized_counts_tsv = file.path(package_root, "data", "young_only", "young_only_ortholog_normalized_counts.tsv.gz")
+  results_csv = Sys.getenv("YOUNG_HEATMAP_RESULTS_CSV", unset = file.path(package_root, "data", "young_only", "young_only_dual_species_deseq2_full_universe.csv")),
+  normalized_counts_tsv = Sys.getenv("YOUNG_HEATMAP_NORMALIZED_COUNTS", unset = file.path(package_root, "data", "young_only", "young_only_ortholog_normalized_counts.tsv.gz"))
 )
 
 required_paths <- unlist(paths, use.names = FALSE)
@@ -80,6 +80,20 @@ selected_blocks <- data.frame(
   block_order = c(1, 2, 3, 4, 5),
   stringsAsFactors = FALSE
 )
+
+if (identical(tolower(Sys.getenv("YOUNG_HEATMAP_INCLUDE_FISSION_FUSION", unset = "false")),
+              "true")) {
+  selected_blocks <- rbind(
+    selected_blocks,
+    data.frame(
+      panel_group = c("Mitochondria fission", "Mitochondria fusion"),
+      panel_subgroup = c("Mitochondria fission", "Mitochondria fusion"),
+      block_label = c("Mitochondrial fission", "Mitochondrial fusion"),
+      block_order = c(6, 7),
+      stringsAsFactors = FALSE
+    )
+  )
+}
 
 read_csv_base <- function(path) {
   utils::read.csv(path, stringsAsFactors = FALSE, check.names = FALSE)
@@ -176,14 +190,19 @@ expr_mat <- clamp_mat(expr_mat, z_limits)
 rownames(expr_mat) <- sample_labels
 colnames(expr_mat) <- display_tbl$gene_symbol
 
-column_split <- factor(as.character(display_tbl$block_label), levels = selected_blocks$block_label)
-column_title_labels <- c(
-  "Glycolysis",
-  "Pyruvate metabolism",
-  "Krebs cycle",
-  "GSH Synthesis +\nImport",
-  "GSH / NADPH\nRecycling"
+column_split <- droplevels(factor(
+  as.character(display_tbl$block_label), levels = selected_blocks$block_label
+))
+column_title_map <- c(
+  "Glycolysis" = "Glycolysis",
+  "Pyruvate metabolism" = "Pyruvate metabolism",
+  "Krebs cycle" = "Krebs cycle",
+  "Glutathione synthesis/import" = "GSH Synthesis +\nImport",
+  "Glutathione / NADPH recycling" = "GSH / NADPH\nRecycling",
+  "Mitochondrial fission" = "Mitochondrial fission",
+  "Mitochondrial fusion" = "Mitochondrial fusion"
 )
+column_title_labels <- unname(column_title_map[levels(column_split)])
 
 gene_list_export <- display_tbl[, c(
   "block_label",
@@ -267,6 +286,12 @@ draw_panel <- function() {
 }
 
 pdf_width <- max(11.5, ncol(expr_mat) * 0.205 + 2.2)
+if (identical(tolower(Sys.getenv("YOUNG_HEATMAP_INCLUDE_FISSION_FUSION", unset = "false")),
+              "true")) {
+  # Additional outer breathing room prevents the first row label and final
+  # fusion title from meeting the device edges in the seven-block version.
+  pdf_width <- pdf_width + 1.5
+}
 pdf_height <- 4.9
 png_width <- round(pdf_width * 300)
 png_height <- round(pdf_height * 300)
