@@ -1,0 +1,174 @@
+panel_group,panel_group_order,panel_subgroup,panel_subgroup_order,gene_symbol,gene_order
+Glycolysis,1,Glycolysis,1,Pck2,1
+Glycolysis,1,Glycolysis,1,Eno3,2
+Glycolysis,1,Glycolysis,1,Pgk1,3
+Glycolysis,1,Glycolysis,1,Pgam1,4
+Glycolysis,1,Glycolysis,1,Aldoc,5
+Glycolysis,1,Glycolysis,1,Tpi1,6
+Glycolysis,1,Glycolysis,1,Pfkl,7
+Glycolysis,1,Glycolysis,1,Aldoa,8
+Glycolysis,1,Glycolysis,1,Gpi1,9
+Glycolysis,1,Glycolysis,1,Hk2,10
+Glycolysis,1,Glycolysis,1,Pkm,11
+Glycolysis,1,Glycolysis,1,Hk1,12
+Glycolysis,1,Glycolysis,1,Pfkp,13
+Glycolysis,1,Glycolysis,1,Ldhb,14
+Glycolysis,1,Glycolysis,1,Eno2,15
+Glycolysis,1,Glycolysis,1,Pck1,16
+Glycolysis,1,Glycolysis,1,Fbp1,17
+Glycolysis,1,Glycolysis,1,Pgam2,18
+Glycolysis,1,Glycolysis,1,Pfkm,19
+Pyruvate metabolism,2,Pyruvate metabolism,1,Pdpr,1
+Pyruvate metabolism,2,Pyruvate metabolism,1,Pdk4,2
+Pyruvate metabolism,2,Pyruvate metabolism,1,Pdha1,3
+Pyruvate metabolism,2,Pyruvate metabolism,1,Pdp1,4
+Pyruvate metabolism,2,Pyruvate metabolism,1,Dlat,5
+Pyruvate metabolism,2,Pyruvate metabolism,1,Mpc2,6
+Pyruvate metabolism,2,Pyruvate metabolism,1,Pdhx,7
+Pyruvate metabolism,2,Pyruvate metabolism,1,Pdk2,8
+Pyruvate metabolism,2,Pyruvate metabolism,1,Pdhb,9
+Pyruvate metabolism,2,Pyruvate metabolism,1,Dld,10
+Pyruvate metabolism,2,Pyruvate metabolism,1,Pdk1,11
+Pyruvate metabolism,2,Pyruvate metabolism,1,Pdp2,12
+Krebs cycle,3,Krebs cycle,1,Dlst,1
+Krebs cycle,3,Krebs cycle,1,Sdhb,2
+Krebs cycle,3,Krebs cycle,1,Dld,3
+Krebs cycle,3,Krebs cycle,1,Ogdh,4
+Krebs cycle,3,Krebs cycle,1,Idh3a,5
+Krebs cycle,3,Krebs cycle,1,Suclg2,6
+Krebs cycle,3,Krebs cycle,1,Suclg1,7
+Krebs cycle,3,Krebs cycle,1,Sucla2,8
+Krebs cycle,3,Krebs cycle,1,Aco2,9
+Krebs cycle,3,Krebs cycle,1,Mdh2,10
+Krebs cycle,3,Krebs cycle,1,Sdhd,11
+Krebs cycle,3,Krebs cycle,1,Sdhc,12
+Krebs cycle,3,Krebs cycle,1,Fh1,13
+Krebs cycle,3,Krebs cycle,1,Ogdhl,14
+Krebs cycle,3,Krebs cycle,1,Sdha,15
+Krebs cycle,3,Krebs cycle,1,Idh3g,16
+Krebs cycle,3,Krebs cycle,1,Idh3b,17
+Krebs cycle,3,Krebs cycle,1,Idh2,18
+Krebs cycle,3,TCA-associated anaplerosis,2,Pck2,19
+Krebs cycle,3,TCA-associated anaplerosis,2,Acly,20
+Krebs cycle,3,TCA-associated anaplerosis,2,Me3,21
+Krebs cycle,3,TCA-associated anaplerosis,2,Sfxn5,22
+Krebs cycle,3,TCA-associated anaplerosis,2,Pcx,23
+Krebs cycle,3,TCA-associated anaplerosis,2,D2hgdh,24
+Krebs cycle,3,TCA-associated anaplerosis,2,L2hgdh,25
+Krebs cycle,3,TCA-associated anaplerosis,2,Mpc2,26
+Krebs cycle,3,TCA-associated anaplerosis,2,Me2,27
+Krebs cycle,3,TCA-associated anaplerosis,2,Fahd1,28
+Krebs cycle,3,TCA-associated anaplerosis,2,Slc25a1,29
+Krebs cycle,3,TCA-associated anaplerosis,2,Abhd11,30
+Krebs cycle,3,TCA-associated anaplerosis,2,Slc25a11,31
+Fatty acid oxidation,4,Carnitine entry/shuttle,1,Cpt1a,1
+Fatty acid oxidation,4,Carnitine entry/shuttle,1,Cpt1b,2
+Fatty acid oxidation,4,Carnitine entry/shuttle,1,Cpt1c,3
+Fatty acid oxidation,4,Carnitine entry/shuttle,1,Cpt2,4
+Fatty acid oxidation,4,Carnitine entry/shuttle,1,Slc25a20,5
+Fatty acid oxidation,4,Carnitine entry/shuttle,1,Crat,6
+Fatty acid oxidation,4,Carnitine entry/shuttle,1,Crot,7
+Fatty acid oxidation,4,Acyl-CoA dehydrogenation,2,Acadm,8
+Fatty acid oxidation,4,Acyl-CoA dehydrogenation,2,Acadvl,9
+Fatty acid oxidation,4,Acyl-CoA dehydrogenation,2,Acadl,10
+Fatty acid oxidation,4,Acyl-CoA dehydrogenation,2,Acads,11
+Fatty acid oxidation,4,Beta-oxidation spiral,3,Acaa2,12
+Fatty acid oxidation,4,Beta-oxidation spiral,3,Echs1,13
+Fatty acid oxidation,4,Beta-oxidation spiral,3,Hadha,14
+Fatty acid oxidation,4,Beta-oxidation spiral,3,Hadhb,15
+Fatty acid oxidation,4,Beta-oxidation spiral,3,Hadh,16
+Fatty acid oxidation,4,Beta-oxidation spiral,3,Hsd17b10,17
+Fatty acid oxidation,4,Beta-oxidation spiral,3,Decr1,18
+Fatty acid oxidation,4,Beta-oxidation spiral,3,Eci1,19
+Glutathione synthesis/maintenance,5,GSH synthesis/import,1,Slc7a11,1
+Glutathione synthesis/maintenance,5,GSH synthesis/import,1,Slc3a2,2
+Glutathione synthesis/maintenance,5,GSH synthesis/import,1,Gclc,3
+Glutathione synthesis/maintenance,5,GSH synthesis/import,1,Gclm,4
+Glutathione synthesis/maintenance,5,GSH synthesis/import,1,Gss,5
+Glutathione synthesis/maintenance,5,GSH recycling/NADPH,2,Gsr,6
+Glutathione synthesis/maintenance,5,GSH recycling/NADPH,2,Pgd,7
+Glutathione synthesis/maintenance,5,GSH recycling/NADPH,2,Idh1,8
+Glutathione synthesis/maintenance,5,GSH recycling/NADPH,2,Idh2,9
+Glutathione synthesis/maintenance,5,GSH recycling/NADPH,2,Me1,10
+Glutathione synthesis/maintenance,5,GSH recycling/NADPH,2,Me2,11
+OxPhos subunits,7,Complex I,1,Ndufb7,1
+OxPhos subunits,7,Complex I,1,Ndufs6,2
+OxPhos subunits,7,Complex I,1,Ndufb10,3
+OxPhos subunits,7,Complex I,1,Ndufb11,4
+OxPhos subunits,7,Complex I,1,Ndufb5,5
+OxPhos subunits,7,Complex I,1,Ndufa8,6
+OxPhos subunits,7,Complex I,1,Ndufa9,7
+OxPhos subunits,7,Complex I,1,Ndufb4,8
+OxPhos subunits,7,Complex I,1,Ndufb9,9
+OxPhos subunits,7,Complex I,1,Ndufa10,10
+OxPhos subunits,7,Complex I,1,Ndufs2,11
+OxPhos subunits,7,Complex I,1,Ndufs5,12
+OxPhos subunits,7,Complex I,1,Ndufs8,13
+OxPhos subunits,7,Complex I,1,mt-Nd6,14
+OxPhos subunits,7,Complex I,1,Ndufb8,15
+OxPhos subunits,7,Complex I,1,Ndufs4,16
+OxPhos subunits,7,Complex I,1,Ndufa12,17
+OxPhos subunits,7,Complex I,1,Ndufv1,18
+OxPhos subunits,7,Complex I,1,Ndufs3,19
+OxPhos subunits,7,Complex I,1,Ndufv2,20
+OxPhos subunits,7,Complex I,1,Ndufs1,21
+OxPhos subunits,7,Complex II,2,Sdha,22
+OxPhos subunits,7,Complex II,2,Sdhb,23
+OxPhos subunits,7,Complex II,2,Sdhd,24
+OxPhos subunits,7,Complex II,2,Sdhc,25
+OxPhos subunits,7,Complex III,3,Cyc1,26
+OxPhos subunits,7,Complex III,3,Uqcrq,27
+OxPhos subunits,7,Complex III,3,Uqcrfs1,28
+OxPhos subunits,7,Complex III,3,Uqcrc1,29
+OxPhos subunits,7,Complex III,3,Uqcrc2,30
+OxPhos subunits,7,Complex III,3,Uqcr10,31
+OxPhos subunits,7,Complex IV,4,Cox6a2,32
+OxPhos subunits,7,Complex IV,4,Cox6b2,33
+OxPhos subunits,7,Complex IV,4,Cox4i1,34
+OxPhos subunits,7,Complex IV,4,Cox8a,35
+OxPhos subunits,7,Complex IV,4,Cox7b,36
+OxPhos subunits,7,Complex IV,4,Cox6c,37
+OxPhos subunits,7,Complex IV,4,Cox4i2,38
+OxPhos subunits,7,Complex IV,4,Cox5a,39
+OxPhos subunits,7,Complex IV,4,Cox8b,40
+OxPhos subunits,7,Complex IV,4,Cox6a1,41
+OxPhos subunits,7,Complex IV,4,Cox6b1,42
+OxPhos subunits,7,Complex V,5,Atp5mk,43
+OxPhos subunits,7,Complex V,5,mt-Atp6,44
+OxPhos subunits,7,Complex V,5,Atp5pf,45
+OxPhos subunits,7,Complex V,5,Atp5f1c,46
+OxPhos subunits,7,Complex V,5,Atp5f1b,47
+OxPhos subunits,7,Complex V,5,Atp5f1a,48
+OxPhos subunits,7,Complex V,5,Atp5mc2,49
+OxPhos subunits,7,Complex V,5,Atp5pb,50
+OxPhos subunits,7,Complex V,5,Dmac2l,51
+Calcium transport,8,Calcium transport,1,Micu3,1
+Calcium transport,8,Calcium transport,1,Mcu,2
+Calcium transport,8,Calcium transport,1,Micu1,3
+Calcium transport,8,Calcium transport,1,Micu2,4
+Calcium transport,8,Calcium transport,1,Mcub,5
+Calcium transport,8,Calcium transport,1,Slc8b1,6
+Calcium transport,8,Calcium transport,1,Slc25a3,7
+Calcium transport,8,Calcium transport,1,Letm1,8
+Mitochondria fission,9,Mitochondria fission,1,Mief1,1
+Mitochondria fission,9,Mitochondria fission,1,Spire1,2
+Mitochondria fission,9,Mitochondria fission,1,Mtfr2,3
+Mitochondria fission,9,Mitochondria fission,1,Mtfp1,4
+Mitochondria fission,9,Mitochondria fission,1,Mul1,5
+Mitochondria fission,9,Mitochondria fission,1,Mff,6
+Mitochondria fission,9,Mitochondria fission,1,Rab24,7
+Mitochondria fission,9,Mitochondria fission,1,Mief2,8
+Mitochondria fission,9,Mitochondria fission,1,Slc25a46,9
+Mitochondria fission,9,Mitochondria fission,1,Dnm1l,10
+Mitochondria fission,9,Mitochondria fission,1,Mtfr1,11
+Mitochondria fission,9,Mitochondria fission,1,Armc10,12
+Mitochondria fission,9,Mitochondria fission,1,Stx17,13
+Mitochondria fission,9,Mitochondria fission,1,Fis1,14
+Mitochondria fission,9,Mitochondria fission,1,Oma1,15
+Mitochondria fusion,10,Mitochondria fusion,1,Miga2,1
+Mitochondria fusion,10,Mitochondria fusion,1,Opa1,2
+Mitochondria fusion,10,Mitochondria fusion,1,Mfn1,3
+Mitochondria fusion,10,Mitochondria fusion,1,Pld6,4
+Mitochondria fusion,10,Mitochondria fusion,1,Mfn2,5
+Mitochondria fusion,10,Mitochondria fusion,1,Miga1,6
+Mitochondria fusion,10,Mitochondria fusion,1,Oma1,7

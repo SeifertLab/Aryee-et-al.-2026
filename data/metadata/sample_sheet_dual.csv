@@ -1,0 +1,19 @@
+﻿,age,type,species,ageGroup
+AEF1,-0.052054795,paired-end,Acomys dimidiatus,embryonic
+AEF2,-0.052054795,paired-end,Acomys dimidiatus,embryonic
+AEF3,-0.035616438,paired-end,Acomys dimidiatus,embryonic
+SMA1,0.534246575,paired-end,Acomys dimidiatus,young
+SMA5,0.534246575,paired-end,Acomys dimidiatus,young
+SMA6,0.821917808,paired-end,Acomys dimidiatus,young
+Aco_5515,3.997260274,paired-end,Acomys dimidiatus,old
+Aco_5516,3.997260274,paired-end,Acomys dimidiatus,old
+Aco_5517,3.997260274,paired-end,Acomys dimidiatus,old
+MEF1,-0.020547945,paired-end,Mus musculus,embryonic
+MEF2,-0.020547945,paired-end,Mus musculus,embryonic
+MEF3,-0.020547945,paired-end,Mus musculus,embryonic
+MUSY1,0.33157,paired-end,Mus musculus,young
+MUSY2,0.33157,paired-end,Mus musculus,young
+MUSY3,0.33157,paired-end,Mus musculus,young
+Mus_old1,1.95890411,paired-end,Mus musculus,old
+Mus_Old2,1.95890411,paired-end,Mus musculus,old
+Mus_Old3,2.043835616,paired-end,Mus musculus,old

@@ -2,7 +2,7 @@
 
 # Standalone mitochondrial fission/fusion heatmaps requested during review.
 #
-# This renderer uses the corrected mm10/v102 strict 1:1 analysis
+# This renderer uses the mm10/v102 strict reciprocal 1:1 analysis
 # and the same row-Z/inferno/ComplexHeatmap style in the main heatmap figure
 # It creates two transparent variants:
 #   1) every curated fission/fusion gene, whether significant or not;
@@ -11,27 +11,36 @@
 # Significant genes are marked with an asterisk; reviewer-requested genes are
 # not promoted to significance.
 
-fork_root <- normalizePath(
-  Sys.getenv(
-    "YOUNG_FISSION_FUSION_FORK_ROOT",
-    unset = "C:/Users/theaw/Dropbox/PhD/Papers/Aging/YOUNG DESEQ/orthology_refresh_20260810"
-  ),
-  winslash = "/",
-  mustWork = TRUE
-)
-aging_root <- normalizePath(file.path(fork_root, "..", ".."), winslash = "/", mustWork = TRUE)
+get_script_path <- function() {
+  hit <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+  if (!length(hit)) return(NULL)
+  sub("^--file=", "", hit[[1]])
+}
+
+script_path <- get_script_path()
+project_root <- if (is.null(script_path)) {
+  normalizePath(".", winslash = "/", mustWork = TRUE)
+} else {
+  normalizePath(file.path(dirname(script_path), "..", ".."), winslash = "/", mustWork = TRUE)
+}
+data_root <- Sys.getenv("ARYEE_DATA_ROOT", unset = file.path(project_root, "data"))
+results_root <- Sys.getenv("ARYEE_RESULTS_ROOT", unset = file.path(project_root, "results"))
 out_dir <- Sys.getenv(
-  "YOUNG_FISSION_FUSION_OUT_DIR",
-  unset = file.path(fork_root, "figures_exact_format", "standalone_fission_fusion_reviewer_additions")
+  "ARYEE_SUPPLEMENT_FIGURE_OUT_DIR",
+  unset = file.path(project_root, "figures", "supplement")
 )
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
-lib_candidates <- c(
-  "C:/Users/theaw/AppData/Local/R/win-library/4.5",
-  "C:/Users/theaw/Documents/R/win-library/4.5",
-  file.path(normalizePath(path.expand("~"), winslash = "/", mustWork = FALSE), "R", "win-library", "4.5")
-)
-.libPaths(unique(c(lib_candidates[file.exists(lib_candidates)], .libPaths())))
+required_packages <- c("ComplexHeatmap", "circlize")
+missing_packages <- required_packages[
+  !vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)
+]
+if (length(missing_packages) > 0L) {
+  stop(
+    "Install required package(s) before running: ",
+    paste(missing_packages, collapse = ", ")
+  )
+}
 
 suppressPackageStartupMessages({
   library(ComplexHeatmap)
@@ -40,14 +49,17 @@ suppressPackageStartupMessages({
 })
 
 paths <- list(
-  panel_csv = file.path(
-    aging_root,
-    "submission", "zenodo_young_deseq_heatmaps_only_2026-06-15",
-    "data", "figure_inputs", "young_mito2_redox_panel_groups.csv"
+  panel_csv = Sys.getenv(
+    "ARYEE_PANEL_CSV",
+    unset = file.path(data_root, "figure_inputs", "young_mito2_redox_panel_groups.csv")
   ),
-  results_csv = file.path(fork_root, "results", "01_corrected_strict_young_deseq2.csv"),
-  normalized_counts_tsv = file.path(
-    fork_root, "figure_inputs_corrected", "young_only_ortholog_normalized_counts.tsv.gz"
+  results_csv = Sys.getenv(
+    "ARYEE_DE_RESULTS_CSV",
+    unset = file.path(results_root, "young_only_deseq2", "young_only_dual_species_deseq2.csv")
+  ),
+  normalized_counts_tsv = Sys.getenv(
+    "ARYEE_NORMALIZED_COUNTS",
+    unset = file.path(results_root, "young_only_deseq2", "young_only_normalized_counts.tsv.gz")
   )
 )
 
@@ -154,12 +166,12 @@ dynamics_tbl$strict_1to1_ortholog <- toupper(as.character(
 )) %in% "TRUE"
 
 count_idx <- match(dynamics_tbl$gene_symbol, counts_tbl$symbol)
-dynamics_tbl$in_corrected_universe <- !is.na(res_idx)
+dynamics_tbl$in_analysis_universe <- !is.na(res_idx)
 dynamics_tbl$has_normalized_expression <- !is.na(count_idx)
 
-if (!all(dynamics_tbl$in_corrected_universe)) {
-  stop("Curated genes absent from corrected DESeq2 universe: ", paste(
-    dynamics_tbl$gene_symbol[!dynamics_tbl$in_corrected_universe], collapse = ", "
+if (!all(dynamics_tbl$in_analysis_universe)) {
+  stop("Curated genes absent from the DESeq2 universe: ", paste(
+    dynamics_tbl$gene_symbol[!dynamics_tbl$in_analysis_universe], collapse = ", "
   ))
 }
 if (!all(dynamics_tbl$has_normalized_expression)) {
@@ -377,7 +389,7 @@ if (!setequal(targeted_added, reviewer_genes)) {
 audit_cols <- c(
   "block_label", "gene_symbol", "gene_id", "acomys_gene_id", "mus_gene_id",
   "pre_review_panel_member", "source_block_duplicate", "reviewer_requested",
-  "in_corrected_universe", "has_normalized_expression", "strict_1to1_ortholog",
+  "in_analysis_universe", "has_normalized_expression", "strict_1to1_ortholog",
   "baseMean", "log2FoldChange_raw", "log2FoldChange_shrunken", "pvalue_raw",
   "padj_raw", "significant_fdr_0_05", "direction", "baseline_significant_only",
   "targeted_four_added", "all_curated_genes", "asterisk_displayed",

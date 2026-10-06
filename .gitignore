@@ -1,0 +1,7 @@
+results/
+figures/
+data/processed_counts/*.csv
+.Rhistory
+.RData
+Rplots.pdf
+*.tmp

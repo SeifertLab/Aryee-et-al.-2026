@@ -15,12 +15,16 @@ project_root <- if (!is.null(script_path)) {
   normalizePath(".", winslash = "/", mustWork = TRUE)
 }
 
-lib_candidates <- c(
-  "C:/Users/theaw/AppData/Local/R/win-library/4.5",
-  "C:/Users/theaw/Documents/R/win-library/4.5",
-  file.path(normalizePath(path.expand("~"), winslash = "/", mustWork = FALSE), "R", "win-library", "4.5")
-)
-.libPaths(unique(c(lib_candidates[file.exists(lib_candidates)], .libPaths())))
+required_packages <- c("ComplexHeatmap", "circlize")
+missing_packages <- required_packages[
+  !vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)
+]
+if (length(missing_packages) > 0L) {
+  stop(
+    "Install required package(s) before running: ",
+    paste(missing_packages, collapse = ", ")
+  )
+}
 
 suppressPackageStartupMessages({
   library(ComplexHeatmap)
@@ -28,14 +32,27 @@ suppressPackageStartupMessages({
   library(grid)
 })
 
-package_root <- file.path(project_root, "submission", "zenodo_young_deseq_heatmaps_only_2026-06-15")
-out_dir <- Sys.getenv("YOUNG_HEATMAP_OUT_DIR", unset = file.path(project_root, "YOUNG DESEQ", "author_heatmap_refresh_2026-07-14", "rotated_sig_blocks_inferno"))
+data_root <- Sys.getenv("ARYEE_DATA_ROOT", unset = file.path(project_root, "data"))
+results_root <- Sys.getenv("ARYEE_RESULTS_ROOT", unset = file.path(project_root, "results"))
+out_dir <- Sys.getenv(
+  "ARYEE_MAIN_FIGURE_OUT_DIR",
+  unset = file.path(project_root, "figures", "main")
+)
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 paths <- list(
-  panel_csv = file.path(package_root, "data", "figure_inputs", "young_mito2_redox_panel_groups.csv"),
-  results_csv = Sys.getenv("YOUNG_HEATMAP_RESULTS_CSV", unset = file.path(package_root, "data", "young_only", "young_only_dual_species_deseq2_full_universe.csv")),
-  normalized_counts_tsv = Sys.getenv("YOUNG_HEATMAP_NORMALIZED_COUNTS", unset = file.path(package_root, "data", "young_only", "young_only_ortholog_normalized_counts.tsv.gz"))
+  panel_csv = Sys.getenv(
+    "ARYEE_PANEL_CSV",
+    unset = file.path(data_root, "figure_inputs", "young_mito2_redox_panel_groups.csv")
+  ),
+  results_csv = Sys.getenv(
+    "ARYEE_DE_RESULTS_CSV",
+    unset = file.path(results_root, "young_only_deseq2", "young_only_dual_species_deseq2.csv")
+  ),
+  normalized_counts_tsv = Sys.getenv(
+    "ARYEE_NORMALIZED_COUNTS",
+    unset = file.path(results_root, "young_only_deseq2", "young_only_normalized_counts.tsv.gz")
+  )
 )
 
 required_paths <- unlist(paths, use.names = FALSE)
@@ -80,20 +97,6 @@ selected_blocks <- data.frame(
   block_order = c(1, 2, 3, 4, 5),
   stringsAsFactors = FALSE
 )
-
-if (identical(tolower(Sys.getenv("YOUNG_HEATMAP_INCLUDE_FISSION_FUSION", unset = "false")),
-              "true")) {
-  selected_blocks <- rbind(
-    selected_blocks,
-    data.frame(
-      panel_group = c("Mitochondria fission", "Mitochondria fusion"),
-      panel_subgroup = c("Mitochondria fission", "Mitochondria fusion"),
-      block_label = c("Mitochondrial fission", "Mitochondrial fusion"),
-      block_order = c(6, 7),
-      stringsAsFactors = FALSE
-    )
-  )
-}
 
 read_csv_base <- function(path) {
   utils::read.csv(path, stringsAsFactors = FALSE, check.names = FALSE)
@@ -286,12 +289,6 @@ draw_panel <- function() {
 }
 
 pdf_width <- max(11.5, ncol(expr_mat) * 0.205 + 2.2)
-if (identical(tolower(Sys.getenv("YOUNG_HEATMAP_INCLUDE_FISSION_FUSION", unset = "false")),
-              "true")) {
-  # Additional outer breathing room prevents the first row label and final
-  # fusion title from meeting the device edges in the seven-block version.
-  pdf_width <- pdf_width + 1.5
-}
 pdf_height <- 4.9
 png_width <- round(pdf_width * 300)
 png_height <- round(pdf_height * 300)
