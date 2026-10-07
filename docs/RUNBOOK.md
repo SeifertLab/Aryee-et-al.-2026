@@ -6,7 +6,7 @@ Download the processed Acomys and Mus prepDE gene-count matrices from GEO GSE339
 
 Verify their SHA-256 hashes before analysis:
 
-In powershell:
+In PowerShell:
 ```powershell
 Get-FileHash data/processed_counts/gene_count_matrix_GTF_acomys.csv -Algorithm SHA256
 Get-FileHash data/processed_counts/gene_count_matrix_GTF_mus.csv -Algorithm SHA256
@@ -18,9 +18,9 @@ Get-FileHash data/processed_counts/gene_count_matrix_GTF_mus.csv -Algorithm SHA2
 Rscript code/R/run_young_only_dual_species_deseq2.R
 ```
 
-The script enforces these quality gates:
+The script checks the following expected values and stops if they are not met:
 
-- 16,314 strict reciprocal 1:1 pairs in the frozen OrthoFinder table;
+- 16,314 strict reciprocal 1:1 pairs in the OrthoFinder table;
 - 16,310 pairs represented in both species' count matrices;
 - 12,944 pairs after `count >= 10 in at least 3 of 18 samples`;
 - six young samples, three per species;
@@ -44,7 +44,7 @@ Expected files under `results/young_only_deseq2/`:
 Rscript code/R/render_rotated_sig_blocks_inferno.R
 ```
 
-This writes PDF, SVG, PNG, displayed-gene, and inclusion-audit files under `figures/main/`.
+This writes PDF, SVG, PNG, a displayed-gene table, and a gene-inclusion table under `figures/main/`.
 
 ## 4. Render supplemental fission/fusion heatmaps
 
@@ -52,7 +52,7 @@ This writes PDF, SVG, PNG, displayed-gene, and inclusion-audit files under `figu
 Rscript code/R/render_standalone_fission_fusion_reviewer_versions.R
 ```
 
-This writes two figure variants and their audit tables under `figures/supplement/`:
+This writes two figure variants and their supporting gene tables under `figures/supplement/`:
 
-- significant genes plus reviewer-requested Opa1, Dnm1l, Oma1, and Gdap1;
+- significant genes plus Opa1, Dnm1l, Oma1, and Gdap1, which were added during peer review;
 - every curated fission/fusion gene, with significance denoted.

@@ -13,4 +13,6 @@ The manuscript used the following raw-read processing:
 
 References were *Acomys dimidiatus* Ensembl Rapid Release assembly GCA_907164435.1 and *Mus musculus* GRCm38 with Ensembl release 102 gene models. The analysis used annotation-guided per-sample StringTie estimates.
 
-The bulk RNAseq pipeline shell commands under `code/RNAseq Pipeline/` preserve the original machine paths and parameters used to generate the count matrices. They are not containerized. Consequently, the public entry point is the pair of processed count matrices deposited in GEO GSE339424. The manuscript R workflow is fully defined from those matrices.
+The shell scripts under `code/RNAseq Pipeline/` preserve the original paths and parameters used between alignment and count-matrix construction. FastQC and MultiQC commands are not included, and the scripts are not containerized. 
+
+The supported reproducible workflow begins with the processed count matrices deposited in GEO GSE339424; all inputs needed for the manuscript R analysis after that point are identified in this repository.

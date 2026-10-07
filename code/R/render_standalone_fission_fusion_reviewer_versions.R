@@ -5,11 +5,10 @@
 # This renderer uses the mm10/v102 strict reciprocal 1:1 analysis
 # and the same row-Z/inferno/ComplexHeatmap style in the main heatmap figure
 # It creates two transparent variants:
-#   1) every curated fission/fusion gene, whether significant or not;
+#   1) every curated fission/fusion gene, whether significant or not 
 #   2) the significant-only baseline plus Opa1, Dnm1l, Oma1, and Gdap1 
 #      as per reviewer request
-# Significant genes are marked with an asterisk; reviewer-requested genes are
-# not promoted to significance.
+# Significant genes are marked with an asterisk
 
 get_script_path <- function() {
   hit <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)

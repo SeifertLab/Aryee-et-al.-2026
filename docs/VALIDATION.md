@@ -13,9 +13,9 @@ R version: 4.5.2
 | Young samples | 6 |
 | Genes with BH FDR < 0.05 | 9,017 |
 
-## Figure-source regression checks
+## Recorded figure-source hashes
 
-The following files are SHA-256-identical to the versions published in the manuscript:
+The validated release recorded the following hashes for the figure-source tables used in the manuscript:
 
 | File | SHA-256 |
 |---|---|

@@ -5,7 +5,7 @@
 #
 # The analysis has three stages:
 #   1. construct the reciprocal one-to-one cross-species count matrix;
-#   2. apply the paper's count filter across all 18 samples;
+#   2. apply the count filter across all 18 samples;
 #   3. run the six-sample young-only DESeq2 Wald comparison.
 
 get_script_path <- function() {
